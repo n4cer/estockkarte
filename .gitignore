@@ -1,0 +1,17 @@
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+bin
+dist
+.target
+logs
+.idea*
+.cache
+.history
+.cache-*
+libexec

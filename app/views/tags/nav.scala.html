@@ -1,0 +1,26 @@
+<div class="navbar-header">
+    <a class="navbar-brand" href="@routes.Application.index()">eStockkarte</a>
+</div>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a href=""><i class="glyphicon glyphicon-calendar"></i> Völker</a></li>
+        <li><a href=""><i class="glyphicon glyphicon-list"></i> Liste der Eintragungen</a></li>
+        <li><a href=""><i class="glyphicon glyphicon-user"></i> Benutzer</a></li>
+    </ul>
+    @if(session.get("username")) {
+        @helper.form(action = routes.Application.index(), 'class -> "navbar-form navbar-right") {
+            <a class="btn btn-primary" href="">@session.get("username")</a>
+            <a class="btn btn-danger" href="">Abmelden</a>
+        }
+    } else {
+	    @helper.form(action = routes.Application.index(), 'class -> "navbar-form navbar-right") {
+		    <div class="form-group">
+	            <input type="text" class="form-control" placeholder="Benutzer" name="username">
+	        </div>
+	        <div class="form-group">
+	            <input type="password" class="form-control" placeholder="Passwort" name="password">
+	        </div>
+	        <button class="btn btn-success" type="submit">Anmelden</button>
+	    }
+	}
+</div>

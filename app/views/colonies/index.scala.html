@@ -1,5 +1,28 @@
-@(message: String)
+@(colonies: List[Colony])
 
 @main("Übersicht Deiner Völker") {
-    @message
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Bezeichnung</th>
+                <th>Rasse</th>
+                <th>Königin</th>
+                <th>Zeichnungsfarbe</th>
+                <th>Zeichennummer</th>
+                <th>Beutenart</th>
+            </tr>
+        </thead>
+        <tbody>
+    @for(colony <- colonies) {
+            <tr>
+                <td>@colony.name</td>
+                <td>@colony.race</td>
+                <td>@colony.queen</td>
+                <td>@colony.queenColor</td>
+                <td>@colony.queenIdent</td>
+                <td>@colony.hive</td>
+            </tr>
+    }
+        </tbody>
+    </table>
 }

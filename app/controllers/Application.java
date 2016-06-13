@@ -9,8 +9,7 @@ import play.data.FormFactory;
 import play.data.validation.Constraints;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
-import views.html.login;
+import views.html.*;
 
 public class Application extends Controller {
   public static class Login {

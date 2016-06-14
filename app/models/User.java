@@ -21,9 +21,14 @@ public class User extends Model {
   @Constraints.Required
   @Column(unique = true)
   public String name;
+  public String firstName;
+  public String lastName;
+  public String street;
+  public String zipCode;
+  public String city;
   @Constraints.Email
   public String email;
-
+  public String telephone;
   public String passwordHash;
 
   @Override

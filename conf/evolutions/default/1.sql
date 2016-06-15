@@ -14,6 +14,7 @@ create table colony (
   hive                      varchar(255),
   comment                   varchar(255),
   user_id                   bigint,
+  visible                   boolean default false,
   constraint uq_colony_name unique (name),
   constraint pk_colony primary key (id))
 ;
@@ -46,6 +47,8 @@ create table beekeepers (
   email                     varchar(255),
   telephone                 varchar(255),
   password_hash             varchar(255),
+  visible                   boolean default false,
+  active                    boolean default true,
   constraint uq_beekeepers_name unique (name),
   constraint pk_beekeepers primary key (id))
 ;

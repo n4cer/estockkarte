@@ -27,6 +27,8 @@ public class Colony extends Model {
   public String comment;
   @ManyToOne
   public User user;
+  @Column(columnDefinition = "boolean default false")
+  public Boolean visible;
 
   @Override
   public String toString() {

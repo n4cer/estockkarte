@@ -30,6 +30,10 @@ public class User extends Model {
   public String email;
   public String telephone;
   public String passwordHash;
+  @Column(columnDefinition = "boolean default false")
+  public Boolean visible;
+  @Column(columnDefinition = "boolean default true")
+  public Boolean active;
 
   @Override
   public String toString() {

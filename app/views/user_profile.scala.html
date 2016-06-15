@@ -1,0 +1,40 @@
+@(user_form: Form[User])
+    
+@import helper._
+
+@main("Benutzerprofil eStockkarte") {
+    @if(flash.contains("success")) {
+    <p class="success">
+        @flash.get("success")
+    </p>
+    }
+    
+    @helper.form(routes.Application.userEdit) {
+    <h1>Profil</h1>
+    
+    <p>
+        @inputText(user_form("name"))
+    </p>
+    <p>
+        @inputText(user_form("firstName"))
+    </p>
+    <p>
+        @inputText(user_form("lastName"))
+    </p>
+    <p>
+        @inputText(user_form("street"))
+    </p>
+    <p>
+        @inputText(user_form("city"))
+    </p>
+    <p>
+        @inputText(user_form("email"))
+    </p>
+    <p>
+        @inputText(user_form("telephone"))
+    </p>
+    <p>
+        <button type="submit">Speichern</button>
+    </p>
+    }
+}

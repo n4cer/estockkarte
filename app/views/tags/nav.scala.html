@@ -9,7 +9,7 @@
     </ul>
     @if(session.get("username")) {
         @helper.form(action = routes.Application.index(), 'class -> "navbar-form navbar-right") {
-            <a class="btn btn-primary" href="">@session.get("username")</a>
+            <a class="btn btn-primary" href="@routes.Application.user()">@session.get("username")</a>
             <a class="btn btn-danger" href="@routes.Application.logout()">Abmelden</a>
         }
     } else {

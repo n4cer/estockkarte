@@ -3,12 +3,6 @@
 @import helper._
 
 @main("Registrierung eStockkarte") {
-    @if(flash.contains("success")) {
-    <p class="success">
-        @flash.get("success")
-    </p>
-    }
-    
     @helper.form(routes.Application.createUser) {
     <h1>Registrieren</h1>
     

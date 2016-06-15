@@ -50,6 +50,7 @@ create table beekeepers (
   visible                   boolean default false,
   active                    boolean default true,
   constraint uq_beekeepers_name unique (name),
+  constraint uq_beekeepers_email unique (email),
   constraint pk_beekeepers primary key (id))
 ;
 

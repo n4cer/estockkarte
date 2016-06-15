@@ -27,6 +27,7 @@ public class User extends Model {
   public String zipCode;
   public String city;
   @Constraints.Email
+  @Column(unique = true)
   public String email;
   public String telephone;
   public String passwordHash;

@@ -1,6 +1,7 @@
 package controllers;
 
 import javax.inject.Inject;
+import javax.persistence.Column;
 
 import models.User;
 import models.Util;
@@ -38,7 +39,7 @@ public class Application extends Controller {
       return null;
     }
   }
-
+  
   @Inject
   FormFactory formFactory;
 
@@ -94,5 +95,27 @@ public class Application extends Controller {
     session().clear();
     flash("success", "Abgemeldet");
     return redirect(routes.Application.index());
+  }
+  
+  public Result user() {
+    Form<User> user_form = formFactory.form(User.class);
+
+    return ok(user_profile.render(user_form.fill(Util.getUser())));
+  }
+  
+  public Result userEdit() {
+    Form<User> form = formFactory.form(User.class).bindFromRequest();
+
+    if (form.hasErrors()) {
+      flash("success", "Fehler");
+      return badRequest(user_profile.render(form));
+    } else {
+      User user = form.get();
+      user.id = Util.getUser().id;
+      user.update();
+      
+      flash("success", "gespeichert");
+      return ok(user_profile.render(form));
+    }
   }
 }

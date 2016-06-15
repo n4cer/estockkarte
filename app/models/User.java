@@ -67,7 +67,10 @@ public class User extends Model {
     User user = new User();
     user.name = userName;
     user.passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+    user.visible = false;
+    user.active = true;
     user.save();
+    
     return user;
   }
 }

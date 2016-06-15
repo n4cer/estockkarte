@@ -1,0 +1,25 @@
+@(signup_form: Form[Application.Signup])
+    
+@import helper._
+
+@main("Registrierung eStockkarte") {
+    @if(flash.contains("success")) {
+    <p class="success">
+        @flash.get("success")
+    </p>
+    }
+    
+    @helper.form(routes.Application.createUser) {
+    <h1>Registrieren</h1>
+    
+    <p>
+        <input type="text" name="username" placeholder="Benutzername" value="@signup_form("username").value">
+    </p>
+    <p>
+        <input type="password" name="password" placeholder="Passwort">
+    </p>
+    <p>
+        <button type="submit">Registrieren</button>
+    </p>
+    }
+}

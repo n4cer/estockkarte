@@ -15,3 +15,4 @@ logs
 .history
 .cache-*
 libexec
+/conf/prod.conf

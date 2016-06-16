@@ -11,6 +11,7 @@ GET     /signup                     controllers.Application.signup()
 POST    /signup                     controllers.Application.createUser()
 GET     /user                       controllers.Application.user()
 POST    /user_edit                  controllers.Application.userEdit()
+GET     /imprint                    controllers.Application.imprint()
 
 #Colonies
 GET     /colonies                   controllers.Colonies.index

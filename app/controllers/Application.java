@@ -3,9 +3,13 @@ package controllers;
 import javax.inject.Inject;
 import javax.persistence.Column;
 
+import org.apache.commons.lang3.StringEscapeUtils;
+
 import models.User;
 import models.Util;
 import play.Logger;
+import play.api.Configuration;
+import play.api.Play;
 import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.Constraints;
@@ -40,8 +44,8 @@ public class Application extends Controller {
     }
   }
   
-  @Inject
-  FormFactory formFactory;
+  @Inject FormFactory formFactory;
+  @Inject Configuration configuration;
 
   public Result authenticate() {
     Form<Login> login_form = formFactory.form(Login.class).bindFromRequest();
@@ -117,5 +121,19 @@ public class Application extends Controller {
       flash("success", "gespeichert");
       return ok(user_profile.render(form));
     }
+  }
+  
+  public Result imprint() {
+    String name = configuration.underlying().getString("owner.name");
+    String street = configuration.underlying().getString("owner.street");
+    String city = configuration.underlying().getString("owner.city");
+    String email = configuration.underlying().getString("owner.email");
+    String email_encoded = "";
+    for (int i = 0; i < email.length(); i++) {
+      email_encoded += ("&#" + email.codePointAt(i) + ";");
+    }
+    System.out.println(email_encoded);
+    
+    return ok(imprint.render(name, street, city, email_encoded));
   }
 }

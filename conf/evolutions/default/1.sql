@@ -15,7 +15,6 @@ create table colony (
   comment                   varchar(255),
   user_id                   bigint,
   visible                   boolean default false,
-  constraint uq_colony_name unique (name),
   constraint pk_colony primary key (id))
 ;
 

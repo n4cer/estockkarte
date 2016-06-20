@@ -1,0 +1,36 @@
+@(add_form: Form[Colony])
+    
+@import helper._
+
+@main("Volk anlegen") {
+    <h1>Registrieren</h1>
+    @helper.form(routes.Colonies.create) {
+    <p>
+        @inputText(add_form("name"))
+    </p>
+    <p>
+        @inputText(add_form("race"))
+    </p>
+    <p>
+        @inputText(add_form("queen"))
+    </p>
+    <p>
+        @inputText(add_form("queenColor"))
+    </p>
+    <p>
+        @inputText(add_form("queenIdent"))
+    </p>
+    <p>
+        @inputText(add_form("hive"))
+    </p>
+    <p>
+        @textarea(add_form("comment"))
+    </p>
+    <p>
+        @checkbox(add_form("visible"))
+    </p>
+    <p>
+        <button type="submit">Speichern</button>
+    </p>
+    }
+}

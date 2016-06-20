@@ -16,7 +16,6 @@ public class Colony extends Model {
   @Id
   public Long id;
   @Constraints.Required
-  @Column(unique = true)
   public String name;
   public String number;
   public String race;

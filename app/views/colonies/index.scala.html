@@ -10,6 +10,7 @@
                 <th>Zeichnungsfarbe</th>
                 <th>Zeichennummer</th>
                 <th>Beutenart</th>
+                <th>Sichtbarkeit andere Benutzer</th>
             </tr>
         </thead>
         <tbody>
@@ -21,8 +22,10 @@
                 <td>@colony.queenColor</td>
                 <td>@colony.queenIdent</td>
                 <td>@colony.hive</td>
+                <td>@colony.visible</td>
             </tr>
     }
         </tbody>
     </table>
+    <a href="@routes.Colonies.add">Neues Volk anlegen</a>
 }

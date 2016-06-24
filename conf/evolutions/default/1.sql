@@ -9,13 +9,19 @@ create table colony (
   number                    varchar(255),
   race                      varchar(255),
   queen                     varchar(255),
-  queen_color               varchar(255),
+  queen_color               integer,
   queen_ident               varchar(255),
-  hive                      varchar(255),
+  hive_id                   bigint,
   comment                   varchar(255),
   user_id                   bigint,
   visible                   boolean default false,
   constraint pk_colony primary key (id))
+;
+
+create table hive (
+  id                        bigserial not null,
+  name                      varchar(255),
+  constraint pk_hive primary key (id))
 ;
 
 create table hive_records (
@@ -53,16 +59,20 @@ create table beekeepers (
   constraint pk_beekeepers primary key (id))
 ;
 
-alter table colony add constraint fk_colony_user_1 foreign key (user_id) references beekeepers (id);
-create index ix_colony_user_1 on colony (user_id);
-alter table hive_records add constraint fk_hive_records_user_2 foreign key (user_id) references beekeepers (id);
-create index ix_hive_records_user_2 on hive_records (user_id);
+alter table colony add constraint fk_colony_hive_1 foreign key (hive_id) references hive (id);
+create index ix_colony_hive_1 on colony (hive_id);
+alter table colony add constraint fk_colony_user_2 foreign key (user_id) references beekeepers (id);
+create index ix_colony_user_2 on colony (user_id);
+alter table hive_records add constraint fk_hive_records_user_3 foreign key (user_id) references beekeepers (id);
+create index ix_hive_records_user_3 on hive_records (user_id);
 
 
 
 # --- !Downs
 
 drop table if exists colony cascade;
+
+drop table if exists hive cascade;
 
 drop table if exists hive_records cascade;
 

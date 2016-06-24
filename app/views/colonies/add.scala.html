@@ -1,4 +1,4 @@
-@(add_form: Form[Colony])
+@(add_form: Form[Colony], hives: List[Hive], colors: List[QueenColor])
     
 @import helper._
 
@@ -15,13 +15,21 @@
         @inputText(add_form("queen"))
     </p>
     <p>
-        @inputText(add_form("queenColor"))
+        @select(
+            field = add_form("queenColor"),
+            options = colors.map(color => color.number.toString -> color.name),
+            '_default -> Seq("nicht gezeichnet")
+        )
     </p>
     <p>
         @inputText(add_form("queenIdent"))
     </p>
     <p>
-        @inputText(add_form("hive"))
+        @select(
+            field = add_form("hive.id"),
+            options = hives.map(hive => hive.id.toString -> hive.name),
+            '_default -> "Bitte wählen"
+        )
     </p>
     <p>
         @textarea(add_form("comment"))

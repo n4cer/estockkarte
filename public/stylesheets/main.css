@@ -28,3 +28,7 @@ body {
 #github_ribbon img {
     z-index: 1031;
 }
+
+.error {
+    color: #cc000e;
+}

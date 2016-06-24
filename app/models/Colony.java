@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.avaje.ebean.Model;
 
@@ -20,9 +21,10 @@ public class Colony extends Model {
   public String number;
   public String race;
   public String queen;
-  public String queenColor;
+  public Integer queenColor;
   public String queenIdent;
-  public String hive;
+  @ManyToOne
+  public Hive hive;
   public String comment;
   @ManyToOne
   public User user;

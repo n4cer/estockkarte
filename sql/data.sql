@@ -1,0 +1,10 @@
+insert into hive (name) values ('Langstrothbeute');
+insert into hive (name) values ('Dadantbeute');
+insert into hive (name) values ('Zanderbeute');
+insert into hive (name) values ('Deutsch Normalmaß');
+insert into hive (name) values ('1,5er Deutsch Normalmaß');
+insert into hive (name) values ('1,5 Zanderbeute');
+insert into hive (name) values ('Segeberger Beute');
+insert into hive (name) values ('Hinterbehandlungsbeute');
+insert into hive (name) values ('Bienenkiste');
+insert into hive (name) values ('Mellifera Einraumbeute');

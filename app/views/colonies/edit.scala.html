@@ -1,10 +1,10 @@
-@(add_form: Form[Colony], hives: List[Hive], colors: List[QueenColor], races: List[Race])
+@(colony: Colony, add_form: Form[Colony], hives: List[Hive], colors: List[QueenColor], races: List[Race])
     
 @import helper._
 
 @main("Volk anlegen") {
     <h1>Registrieren</h1>
-    @helper.form(routes.Colonies.create) {
+    @helper.form(routes.Colonies.update(colony.id)) {
     <p>
         @inputText(add_form("name"), '_label -> "Name")
     </p>

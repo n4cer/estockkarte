@@ -7,7 +7,7 @@ create table colony (
   id                        bigserial not null,
   name                      varchar(255),
   number                    varchar(255),
-  race                      varchar(255),
+  race_id                   bigint,
   queen                     varchar(255),
   queen_color               integer,
   queen_ident               varchar(255),
@@ -41,6 +41,12 @@ create table hive_records (
   constraint pk_hive_records primary key (id))
 ;
 
+create table race (
+  id                        bigserial not null,
+  name                      varchar(255),
+  constraint pk_race primary key (id))
+;
+
 create table beekeepers (
   id                        bigserial not null,
   name                      varchar(255),
@@ -59,12 +65,14 @@ create table beekeepers (
   constraint pk_beekeepers primary key (id))
 ;
 
-alter table colony add constraint fk_colony_hive_1 foreign key (hive_id) references hive (id);
-create index ix_colony_hive_1 on colony (hive_id);
-alter table colony add constraint fk_colony_user_2 foreign key (user_id) references beekeepers (id);
-create index ix_colony_user_2 on colony (user_id);
-alter table hive_records add constraint fk_hive_records_user_3 foreign key (user_id) references beekeepers (id);
-create index ix_hive_records_user_3 on hive_records (user_id);
+alter table colony add constraint fk_colony_race_1 foreign key (race_id) references race (id);
+create index ix_colony_race_1 on colony (race_id);
+alter table colony add constraint fk_colony_hive_2 foreign key (hive_id) references hive (id);
+create index ix_colony_hive_2 on colony (hive_id);
+alter table colony add constraint fk_colony_user_3 foreign key (user_id) references beekeepers (id);
+create index ix_colony_user_3 on colony (user_id);
+alter table hive_records add constraint fk_hive_records_user_4 foreign key (user_id) references beekeepers (id);
+create index ix_hive_records_user_4 on hive_records (user_id);
 
 
 
@@ -75,6 +83,8 @@ drop table if exists colony cascade;
 drop table if exists hive cascade;
 
 drop table if exists hive_records cascade;
+
+drop table if exists race cascade;
 
 drop table if exists beekeepers cascade;
 

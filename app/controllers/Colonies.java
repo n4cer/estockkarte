@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import models.Colony;
 import models.Hive;
 import models.QueenColor;
+import models.Race;
+import models.User;
 import models.Util;
 import play.data.Form;
 import play.data.FormFactory;
@@ -35,22 +37,74 @@ public class Colonies extends Controller {
   
   public Result add() {
     List<Hive> hives = Hive.find.all();
+    List<Race> races = Race.find.all();
     
-    return ok(add.render(formFactory.form(Colony.class), hives, QueenColor.getColors()));
+    return ok(add.render(formFactory.form(Colony.class), hives, QueenColor.getColors(), races));
   }
   
   public Result create() {
     Form<Colony> form = formFactory.form(Colony.class).bindFromRequest();
     List<Hive> hives = Hive.find.all();
+    List<Race> races = Race.find.all();
 
     if (form.hasErrors()) {
-      return badRequest(add.render(form, hives, QueenColor.getColors()));
+      return badRequest(add.render(form, hives, QueenColor.getColors(), races));
     } 
     
     Colony colony = form.get();
     colony.user = Util.getUser();
     colony.save();
       
+    return redirect(routes.Colonies.index());
+  }
+  
+  public Result edit(Long id) {
+    Colony colony = Colony.find.byId(id);
+    User user = Util.getUser();
+    
+    if (!user.equals(colony.user)) {
+      return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    List<Hive> hives = Hive.find.all();
+    List<Race> races = Race.find.all();
+    
+    return ok(edit.render(colony, formFactory.form(Colony.class).fill(colony), hives, QueenColor.getColors(), races));
+  }
+  
+  public Result update(Long id) {
+    Colony old_colony = Colony.find.byId(id);
+    User user = Util.getUser();
+    
+    if (!user.equals(old_colony.user)) {
+        return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    Form<Colony> form = formFactory.form(Colony.class).bindFromRequest();
+    List<Hive> hives = Hive.find.all();
+    List<Race> races = Race.find.all();
+
+    if (form.hasErrors()) {
+      return badRequest(add.render(form, hives, QueenColor.getColors(), races));
+    } 
+    
+    Colony colony = form.get();
+    colony.user = Util.getUser();
+    colony.update();
+      
+    return redirect(routes.Colonies.index());
+  }
+  
+  public Result delete(Long id) {
+    Colony colony = Colony.find.byId(id);
+    User user = Util.getUser();
+    
+    if (!user.equals(colony.user)) {
+      return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    colony.delete();
+    
     return redirect(routes.Colonies.index());
   }
 }

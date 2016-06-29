@@ -19,7 +19,8 @@ public class Colony extends Model {
   @Constraints.Required
   public String name;
   public String number;
-  public String race;
+  @ManyToOne
+  public Race race;
   public String queen;
   public Integer queenColor;
   public String queenIdent;

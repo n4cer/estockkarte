@@ -24,8 +24,10 @@ create table hive (
   constraint pk_hive primary key (id))
 ;
 
-create table hive_records (
+create table hive_record (
   id                        bigserial not null,
+  colony_id                 bigint,
+  date                      timestamp,
   gentleness                integer,
   swarming                  integer,
   strength                  integer,
@@ -38,7 +40,8 @@ create table hive_records (
   varroa                    varchar(255),
   comment                   varchar(255),
   user_id                   bigint,
-  constraint pk_hive_records primary key (id))
+  constraint uq_hive_record_colony_id unique (colony_id),
+  constraint pk_hive_record primary key (id))
 ;
 
 create table race (
@@ -71,8 +74,10 @@ alter table colony add constraint fk_colony_hive_2 foreign key (hive_id) referen
 create index ix_colony_hive_2 on colony (hive_id);
 alter table colony add constraint fk_colony_user_3 foreign key (user_id) references beekeepers (id);
 create index ix_colony_user_3 on colony (user_id);
-alter table hive_records add constraint fk_hive_records_user_4 foreign key (user_id) references beekeepers (id);
-create index ix_hive_records_user_4 on hive_records (user_id);
+alter table hive_record add constraint fk_hive_record_colony_4 foreign key (colony_id) references colony (id);
+create index ix_hive_record_colony_4 on hive_record (colony_id);
+alter table hive_record add constraint fk_hive_record_user_5 foreign key (user_id) references beekeepers (id);
+create index ix_hive_record_user_5 on hive_record (user_id);
 
 
 
@@ -82,7 +87,7 @@ drop table if exists colony cascade;
 
 drop table if exists hive cascade;
 
-drop table if exists hive_records cascade;
+drop table if exists hive_record cascade;
 
 drop table if exists race cascade;
 

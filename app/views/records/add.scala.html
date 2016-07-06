@@ -1,0 +1,15 @@
+@(add_form: Form[HiveRecord], colony: Colony)
+    
+@import helper._
+
+@main("Eintrag Stockkarte") {
+    <h1>Eintrag Stockkarte</h1>
+    @helper.form(routes.HiveRecords.create(colony.id)) {
+    <p>
+        @inputText(add_form("date"), '_label -> "Datum")
+    </p>
+    <p>
+        <button type="submit">Speichern</button>
+    </p>
+    }
+}

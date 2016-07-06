@@ -1,0 +1,21 @@
+@(colony: Colony, records: List[HiveRecord])
+
+@main("Stockkarte " + colony) {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Sanftmut</th>
+            </tr>
+        </thead>
+        <tbody>
+    @for(record <- records) {
+            <tr>
+                <td>@record.date</td>
+                <td>@record.gentleness</td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <a href="@routes.HiveRecords.add(colony.id)">Neuen Eintrag anlegen</a>
+}

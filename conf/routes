@@ -17,9 +17,15 @@ GET     /imprint                    controllers.Application.imprint()
 GET     /colonies                   controllers.Colonies.index()
 GET     /colonies/add               controllers.Colonies.add()
 POST    /colonies/add               controllers.Colonies.create()
-GET     /colonies/edit              controllers.Colonies.edit(id: Long)
-POST    /colonies/edit              controllers.Colonies.update(id: Long)
-GET     /colonies/delete            controllers.Colonies.delete(id: Long)
+GET     /colonies/edit/:id          controllers.Colonies.edit(id: Long)
+POST    /colonies/edit/:id          controllers.Colonies.update(id: Long)
+GET     /colonies/delete/:id        controllers.Colonies.delete(id: Long)
+
+#Records
+GET     /records                    controllers.HiveRecords.index()
+GET     /records/:id                controllers.HiveRecords.show(id:Long)
+GET     /records/add/:id            controllers.HiveRecords.add(id:Long)
+POST    /records/add/:id            controllers.HiveRecords.create(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,18 +1,23 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.avaje.ebean.Model;
 
 @Entity
-public class HiveRecords extends Model {
+public class HiveRecord extends Model {
 
-  public static Finder<Long, HiveRecords> find = new Finder<Long, HiveRecords>(HiveRecords.class);
+  public static Finder<Long, HiveRecord> find = new Finder<Long, HiveRecord>(HiveRecord.class);
   @Id
   public Long id;
+  @OneToOne
   public Colony colony;
+  public Date date;
   public Integer gentleness;
   public Integer swarming;
   public Integer strength;

@@ -1,0 +1,27 @@
+@(colonies: List[Colony])
+
+@main("Übersicht Deiner Völker") {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Bezeichnung</th>
+                <th>Letzter Eintrag</th>
+                <th />
+            </tr>
+        </thead>
+        <tbody>
+    @for(colony <- colonies) {
+            <tr>
+                <td><a href="@routes.HiveRecords.show(colony.id)">@colony.name</a></td>
+                <td>TODO</td>
+                <td>
+                    <a href="@routes.HiveRecords.show(colony.id)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <a href="@routes.Colonies.add">Neues Volk anlegen</a>
+}

@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.avaje.ebean.Model;
 
@@ -15,11 +14,11 @@ public class HiveRecord extends Model {
   public static Finder<Long, HiveRecord> find = new Finder<Long, HiveRecord>(HiveRecord.class);
   @Id
   public Long id;
-  @OneToOne
+  @ManyToOne
   public Colony colony;
   public Date date;
   public Integer gentleness;
-  public Integer swarming;
+  public Boolean swarming;
   public Integer strength;
   public Boolean queen;
   public Boolean maggots;

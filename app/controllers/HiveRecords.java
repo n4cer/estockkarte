@@ -10,6 +10,7 @@ import models.Hive;
 import models.HiveRecord;
 import models.QueenColor;
 import models.Race;
+import models.User;
 import models.Util;
 import play.data.Form;
 import play.data.FormFactory;
@@ -70,5 +71,41 @@ public class HiveRecords extends Controller {
     record.save();
       
     return redirect(routes.HiveRecords.show(colony.id));
+  }
+  
+  public Result edit(Long id) {
+    HiveRecord record = HiveRecord.find.byId(id);
+    User user = Util.getUser();
+    Colony colony = record.colony;
+    
+    if (!user.equals(record.user)) {
+      return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    return ok(edit.render(record, formFactory.form(HiveRecord.class).fill(record), colony));
+  }
+  
+  public Result update(Long id) {
+    HiveRecord old_record = HiveRecord.find.byId(id);
+    User user = Util.getUser();
+    Colony colony = old_record.colony;
+    
+    if (!user.equals(old_record.user)) {
+        return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    Form<HiveRecord> form = formFactory.form(HiveRecord.class).bindFromRequest();
+
+    if (form.hasErrors()) {
+      return badRequest(edit.render(old_record, form, colony));
+    } 
+    
+    HiveRecord record = form.get();
+    record.id = old_record.id;
+    record.colony = colony;
+    record.user = Util.getUser();
+    record.update();
+      
+    return redirect(routes.HiveRecords.index());
   }
 }

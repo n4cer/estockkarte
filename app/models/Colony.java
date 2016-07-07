@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -31,6 +33,12 @@ public class Colony extends Model {
   public User user;
   @Column(columnDefinition = "boolean default false")
   public Boolean visible;
+  @OneToMany
+  public List<HiveRecord> hiveRecords;
+  
+  public String getLastEntryDate() {
+    return this.hiveRecords.get(0).date.toString();
+  }
 
   @Override
   public String toString() {

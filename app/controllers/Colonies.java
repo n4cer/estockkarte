@@ -84,7 +84,7 @@ public class Colonies extends Controller {
     List<Race> races = Race.find.all();
 
     if (form.hasErrors()) {
-      return badRequest(add.render(form, hives, QueenColor.getColors(), races));
+      return badRequest(edit.render(old_colony, form, hives, QueenColor.getColors(), races));
     } 
     
     Colony colony = form.get();

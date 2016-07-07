@@ -29,7 +29,7 @@ create table hive_record (
   colony_id                 bigint,
   date                      timestamp,
   gentleness                integer,
-  swarming                  integer,
+  swarming                  boolean,
   strength                  integer,
   queen                     boolean,
   maggots                   boolean,
@@ -40,7 +40,6 @@ create table hive_record (
   varroa                    varchar(255),
   comment                   varchar(255),
   user_id                   bigint,
-  constraint uq_hive_record_colony_id unique (colony_id),
   constraint pk_hive_record primary key (id))
 ;
 

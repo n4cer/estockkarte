@@ -13,7 +13,7 @@
     @for(colony <- colonies) {
             <tr>
                 <td><a href="@routes.HiveRecords.show(colony.id)">@colony.name</a></td>
-                <td>TODO</td>
+                <td>@colony.getLastEntryDate()</td>
                 <td>
                     <a href="@routes.HiveRecords.show(colony.id)">
                         <i class="glyphicon glyphicon-edit"></i>

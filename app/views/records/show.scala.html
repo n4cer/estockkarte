@@ -15,6 +15,7 @@
                 <th>Futter</th>
                 <th>Varroa-Kontrolle</th>
                 <th>Varroa</th>
+                <th />
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,11 @@
                 <td>@record.feeding</td>
                 <td>@record.varroaCheck</td>
                 <td>@record.varroa</td>
+                <td>
+                    <a href="@routes.HiveRecords.edit(record.id)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
             </tr>
     }
         </tbody>

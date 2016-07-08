@@ -6,7 +6,7 @@
     <h1>Eintrag Stockkarte</h1>
     @helper.form(routes.HiveRecords.create(colony.id)) {
     <p>
-        @inputText(add_form("date"), '_label -> "Datum", 'type -> "date")
+        @inputText(add_form("date"), '_label -> "Datum", 'type -> "date", 'class -> "datepicker")
     </p>
     <p>
         @inputText(add_form("gentleness"), 'type -> "number", 'min -> "0", 'max -> 4, '_label -> "Sanftmut")
@@ -45,4 +45,11 @@
         <button type="submit">Speichern</button>
     </p>
     }
+    
+    <script>
+      $(function() {
+        $(".datepicker").datepicker();
+        $(".datepicker").datepicker("option", "dateFormat", "yy-mm-dd");
+      });
+    </script>
 }

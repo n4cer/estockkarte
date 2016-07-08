@@ -1,3 +1,14 @@
 @main("Startseite eStockkarte") {
+    <h1>Übersicht</h1>
     
+    @if(Util.getUser() == null) {
+      <p>
+        Online Stockkarte im Aufbau - Bitte einloggen oder registrieren
+      </p>
+    } else {
+      <p>
+        Hallo @Util.getUser().name<br>
+        Online Stockkarte im Aufbau
+      </p>
+    }
 }

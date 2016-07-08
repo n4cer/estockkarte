@@ -106,6 +106,6 @@ public class HiveRecords extends Controller {
     record.user = Util.getUser();
     record.update();
       
-    return redirect(routes.HiveRecords.index());
+    return redirect(routes.HiveRecords.show(colony.id));
   }
 }

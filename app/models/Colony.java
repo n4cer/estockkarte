@@ -32,7 +32,7 @@ public class Colony extends Model {
   @ManyToOne
   public User user;
   @Column(columnDefinition = "boolean default false")
-  public Boolean visible;
+  public Boolean visible = false;
   @OneToMany
   public List<HiveRecord> hiveRecords;
   

@@ -32,6 +32,7 @@ create table hive_record (
   swarming                  boolean,
   strength                  integer,
   queen                     boolean,
+  eggs                      boolean,
   maggots                   boolean,
   capped_brood              boolean,
   queen_cells               boolean,

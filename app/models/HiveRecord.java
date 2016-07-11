@@ -18,12 +18,13 @@ public class HiveRecord extends Model {
   public Colony colony;
   public Date date;
   public Integer gentleness;
-  public Boolean swarming;
+  public Boolean swarming = false;
   public Integer strength;
-  public Boolean queen;
-  public Boolean maggots;
-  public Boolean cappedBrood;
-  public Boolean queenCells;
+  public Boolean queen = false;
+  public Boolean eggs = false;
+  public Boolean maggots = false;
+  public Boolean cappedBrood = false;
+  public Boolean queenCells = false;
   public String feeding;
   public String varroaCheck;
   public String varroa;

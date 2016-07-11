@@ -88,6 +88,7 @@ public class Colonies extends Controller {
     } 
     
     Colony colony = form.get();
+    colony.id = old_colony.id;
     colony.user = Util.getUser();
     colony.update();
       

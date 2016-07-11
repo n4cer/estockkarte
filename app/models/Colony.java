@@ -37,7 +37,15 @@ public class Colony extends Model {
   public List<HiveRecord> hiveRecords;
   
   public String getLastEntryDate() {
-    return this.hiveRecords.get(0).date.toString();
+    if(this.hiveRecords.size() > 0) {
+      HiveRecord record = this.hiveRecords.get(0);
+      
+      if(record.date != null) {
+        return record.date.toString();
+      }
+    }
+    
+    return "";
   }
 
   @Override

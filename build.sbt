@@ -11,5 +11,9 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   evolutions,
-  "org.mindrot" % "jbcrypt" % "0.3m"
+  "org.mindrot" % "jbcrypt" % "0.3m",
+  "com.github.kenglxn.qrgen" % "javase" % "2.2.0",
+  "com.google.zxing" % "javase" % "3.2.1"
 )
+
+resolvers += "jitpack" at "https://jitpack.io"

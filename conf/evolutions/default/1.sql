@@ -15,6 +15,8 @@ create table colony (
   comment                   varchar(255),
   user_id                   bigint,
   visible                   boolean default false,
+  shot_url                  varchar(10),
+  constraint uq_colony_shot_url unique (shot_url),
   constraint pk_colony primary key (id))
 ;
 

@@ -52,6 +52,7 @@ public class Colonies extends Controller {
     
     Colony colony = form.get();
     colony.user = Util.getUser();
+    colony.shotUrl = Util.rndUrl(10);
     colony.save();
       
     return redirect(routes.Colonies.index());

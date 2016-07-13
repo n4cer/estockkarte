@@ -35,6 +35,8 @@ public class Colony extends Model {
   public Boolean visible = false;
   @OneToMany
   public List<HiveRecord> hiveRecords;
+  @Column(length=10,unique=true)
+  public String shotUrl;
   
   public String getLastEntryDate() {
     if(this.hiveRecords.size() > 0) {

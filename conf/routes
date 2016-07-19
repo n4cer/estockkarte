@@ -20,6 +20,7 @@ POST    /colonies/add               controllers.Colonies.create()
 GET     /colonies/edit/:id          controllers.Colonies.edit(id: Long)
 POST    /colonies/edit/:id          controllers.Colonies.update(id: Long)
 GET     /colonies/delete/:id        controllers.Colonies.delete(id: Long)
+GET     /colonies/qrcode/:shortUrl  controllers.Colonies.showQRCode(shortUrl: String)
 
 #Records
 GET     /records                    controllers.HiveRecords.index()

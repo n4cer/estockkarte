@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,6 +11,7 @@ import models.QueenColor;
 import models.Race;
 import models.User;
 import models.Util;
+import net.glxn.qrgen.javase.QRCode;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -52,7 +54,7 @@ public class Colonies extends Controller {
     
     Colony colony = form.get();
     colony.user = Util.getUser();
-    colony.shotUrl = Util.rndUrl(10);
+    colony.shortUrl = Util.rndUrl(10);
     colony.save();
       
     return redirect(routes.Colonies.index());
@@ -68,6 +70,8 @@ public class Colonies extends Controller {
     
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
+    
+    QRCode.from("https://blah").stream();
     
     return ok(edit.render(colony, formFactory.form(Colony.class).fill(colony), hives, QueenColor.getColors(), races));
   }
@@ -107,5 +111,11 @@ public class Colonies extends Controller {
     colony.delete();
     
     return redirect(routes.Colonies.index());
+  }
+  
+  public Result showQRCode(String shortUrl) {
+    File qrcode = QRCode.from("https://www.estockkarte.de/direct/" + shortUrl).file();
+    
+    return ok(qrcode).as("image/png");
   }
 }

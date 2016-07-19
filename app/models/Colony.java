@@ -36,7 +36,7 @@ public class Colony extends Model {
   @OneToMany
   public List<HiveRecord> hiveRecords;
   @Column(length=10,unique=true)
-  public String shotUrl;
+  public String shortUrl;
   
   public String getLastEntryDate() {
     if(this.hiveRecords.size() > 0) {

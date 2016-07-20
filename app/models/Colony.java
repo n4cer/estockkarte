@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 
 import com.avaje.ebean.Model;
 
+import controllers.Colonies;
 import play.data.validation.Constraints;
 
 @Entity
@@ -49,7 +50,26 @@ public class Colony extends Model {
     
     return "";
   }
-
+  
+  public String getQueenColorString() {
+    switch (this.queenColor) {
+      case Colonies.COLOR_NONE:
+        return "nicht gezeichnet";
+      case Colonies.COLOR_BLUE:
+        return "Blau";
+      case Colonies.COLOR_WHITE:
+        return "Weiß";
+      case Colonies.COLOR_YELLOW:
+        return "Gelb";
+      case Colonies.COLOR_RED:
+        return "Rot";
+      case Colonies.COLOR_GREEN:
+        return "Grün";
+      default:
+        return "n/a";
+    }
+  }
+  
   @Override
   public String toString() {
     return name;

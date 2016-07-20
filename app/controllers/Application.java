@@ -1,12 +1,19 @@
 package controllers;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.Column;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import models.Colony;
+import models.Hive;
+import models.QueenColor;
+import models.Race;
 import models.User;
 import models.Util;
+import net.glxn.qrgen.javase.QRCode;
 import play.Logger;
 import play.api.Configuration;
 import play.api.Play;
@@ -135,5 +142,34 @@ public class Application extends Controller {
     System.out.println(email_encoded);
     
     return ok(imprint.render(name, street, city, email_encoded));
+  }
+  
+  /**
+   * redirect to colony overview
+   * @return Result
+   */
+  public Result direct(String shortUrl) {
+    Colony colony = Colony.find.where().eq("shortUrl", shortUrl).findUnique();
+    
+    if(colony == null) {
+      return badRequest("Seite nicht gefunden");
+    }
+    
+    return redirect(controllers.routes.Application.colonyDetail(colony.id));
+  }
+  
+  public Result colonyDetail(Long id) {
+    Colony colony = Colony.find.byId(id);
+    User user = Util.getUser();
+    
+    if(colony.visible) {
+      return ok(views.html.colonies.detail.render(colony));
+    }
+    
+    if (user != null && user.equals(colony.user)) {
+      return ok(views.html.colonies.detail.render(colony));
+    }
+    
+    return badRequest("Zugriff nicht erlaubt!");
   }
 }

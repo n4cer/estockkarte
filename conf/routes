@@ -12,6 +12,7 @@ POST    /signup                     controllers.Application.createUser()
 GET     /user                       controllers.Application.user()
 POST    /user_edit                  controllers.Application.userEdit()
 GET     /imprint                    controllers.Application.imprint()
+GET     /d/:shortUrl                controllers.Application.direct(shortUrl: String)
 
 #Colonies
 GET     /colonies                   controllers.Colonies.index()
@@ -21,6 +22,7 @@ GET     /colonies/edit/:id          controllers.Colonies.edit(id: Long)
 POST    /colonies/edit/:id          controllers.Colonies.update(id: Long)
 GET     /colonies/delete/:id        controllers.Colonies.delete(id: Long)
 GET     /colonies/qrcode/:shortUrl  controllers.Colonies.showQRCode(shortUrl: String)
+GET     /colonies/detail/:id        controllers.Application.colonyDetail(id: Long)
 
 #Records
 GET     /records                    controllers.HiveRecords.index()

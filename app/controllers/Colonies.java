@@ -71,8 +71,6 @@ public class Colonies extends Controller {
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
     
-    QRCode.from("https://blah").stream();
-    
     return ok(edit.render(colony, formFactory.form(Colony.class).fill(colony), hives, QueenColor.getColors(), races));
   }
   
@@ -114,7 +112,7 @@ public class Colonies extends Controller {
   }
   
   public Result showQRCode(String shortUrl) {
-    File qrcode = QRCode.from("https://www.estockkarte.de/direct/" + shortUrl).file();
+    File qrcode = QRCode.from("https://www.estockkarte.de/d/" + shortUrl).file();
     
     return ok(qrcode).as("image/png");
   }

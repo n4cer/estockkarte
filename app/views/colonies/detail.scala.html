@@ -1,4 +1,4 @@
-@(colony: Colony)
+@(colony: Colony, records: List[HiveRecord])
     
 @import helper._
 
@@ -11,4 +11,54 @@
     <p><strong>Ident:</strong> @colony.queenIdent</p>
     <p><strong>Beute:</strong> @colony.hive</p>
     <p><strong>Kommentar:</strong> @colony.comment</p>
+    
+    @if(Util.getUser() != null && Util.getUser().equals(colony.user)) {
+    <a href="@routes.Colonies.inscription(colony.id)">Beutenbeschriftung</a>
+    }
+    
+    <h2>letzte 4 Stockkarteneinträge</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Sanftmut</th>
+                <th>Schwarmstimmung</th>
+                <th>Stärke</th>
+                <th>Königin?</th>
+                <th>Eier?</th>
+                <th>Maden?</th>
+                <th>verdeckelte Brut</th>
+                <th>Weiselzellen</th>
+                <th>Futter</th>
+                <th>Varroa-Kontrolle</th>
+                <th>Varroa</th>
+                <th />
+            </tr>
+        </thead>
+        <tbody>
+    @for(record <- records) {
+            <tr>
+                <td>@record.date</td>
+                <td>@record.gentleness</td>
+                <td>@record.swarming</td>
+                <td>@record.strength</td>
+                <td>@record.queen</td>
+                <td>@record.eggs</td>
+                <td>@record.maggots</td>
+                <td>@record.cappedBrood</td>
+                <td>@record.queenCells</td>
+                <td>@record.feeding</td>
+                <td>@record.varroaCheck</td>
+                <td>@record.varroa</td>
+                <td>
+                    @if(Util.getUser() != null && Util.getUser().equals(colony.user)) {
+                    <a href="@routes.HiveRecords.edit(record.id)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    }
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
 }

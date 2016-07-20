@@ -1,0 +1,14 @@
+@(colony: Colony)
+    
+@import helper._
+
+@main("Beutenbeschriftung") {
+    <h1>@colony.name</h1>
+    <img src="@routes.Colonies.showQRCode(colony.shortUrl)" alt="QRCode" />
+    <p><strong>Name:</strong> @colony.user.firstName @colony.user.lastName<br />
+    <strong>Straße:</strong> @colony.user.street<br />
+    <strong>Ort:</strong> @colony.user.zipCode @colony.user.city<br />
+    <strong>E-Mail:</strong> @colony.user.email<br />
+    <strong>Telefon:</strong> @colony.user.telephone<br />
+    <strong>https://www.estockkarte.de/d/@colony.shortUrl</strong></p>
+}

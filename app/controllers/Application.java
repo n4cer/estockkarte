@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 
 import models.Colony;
 import models.Hive;
+import models.HiveRecord;
 import models.QueenColor;
 import models.Race;
 import models.User;
@@ -160,14 +161,15 @@ public class Application extends Controller {
   
   public Result colonyDetail(Long id) {
     Colony colony = Colony.find.byId(id);
+    List<HiveRecord> records = HiveRecord.find.where().eq("colony", colony).order().desc("date").setMaxRows(4).findList();
     User user = Util.getUser();
     
     if(colony.visible) {
-      return ok(views.html.colonies.detail.render(colony));
+      return ok(views.html.colonies.detail.render(colony, records));
     }
     
     if (user != null && user.equals(colony.user)) {
-      return ok(views.html.colonies.detail.render(colony));
+      return ok(views.html.colonies.detail.render(colony, records));
     }
     
     return badRequest("Zugriff nicht erlaubt!");

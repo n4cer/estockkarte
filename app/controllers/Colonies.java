@@ -116,4 +116,15 @@ public class Colonies extends Controller {
     
     return ok(qrcode).as("image/png");
   }
+  
+  public Result inscription(Long id) {
+    Colony colony = Colony.find.byId(id);
+    User user = Util.getUser();
+    
+    if (!user.equals(colony.user)) {
+      return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    return ok(inscription.render(colony));
+  }
 }

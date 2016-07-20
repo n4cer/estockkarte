@@ -174,4 +174,20 @@ public class Application extends Controller {
     
     return badRequest("Zugriff nicht erlaubt!");
   }
+  
+  public Result recordDetail(Long id) {
+    HiveRecord record = HiveRecord.find.byId(id);
+    Colony colony = record.colony;
+    User user = Util.getUser();
+    
+    if(colony.visible) {
+      return ok(views.html.records.detail.render(record));
+    }
+    
+    if (user != null && user.equals(colony.user)) {
+      return ok(views.html.records.detail.render(record));
+    }
+    
+    return badRequest("Zugriff nicht erlaubt!");
+  }
 }

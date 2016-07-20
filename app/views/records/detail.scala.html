@@ -1,0 +1,22 @@
+@(record: HiveRecord)
+    
+@import helper._
+
+@main("Eintrag anzeigen") {
+    <h1>Eintrag anzeigen</h1>
+    <p>
+        <strong>Datum: </strong>@record.date.format("dd.MM.yyy")<br />
+        <strong>Sanftmut: </strong>@record.gentleness<br />
+        <strong>Schwamrtrieb: </strong>@record.swarming<br />
+        <strong>Stärke: </strong>@record.strength<br />
+        <strong>Königin: </strong>@record.queen<br />
+        <strong>Eier: </strong>@record.eggs<br />
+        <strong>Maden: </strong>@record.maggots<br />
+        <strong>verdeckelte Brut: </strong>@record.cappedBrood<br />
+        <strong>Weiselzellen: </strong>@record.queenCells<br />
+        <strong>Futter: </strong>@record.feeding<br />
+        <strong>Varroa-Kontrolle: </strong>@record.varroaCheck<br />
+        <strong>Varroa: </strong>@record.varroa<br />
+        <strong>Kommentar: </strong>@record.comment<br />
+    </p>
+}

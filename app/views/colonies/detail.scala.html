@@ -38,7 +38,7 @@
         <tbody>
     @for(record <- records) {
             <tr>
-                <td>@record.date</td>
+                <td>@record.date.format("dd.MM.yyy")</td>
                 <td>@record.gentleness</td>
                 <td>@record.swarming</td>
                 <td>@record.strength</td>
@@ -54,6 +54,10 @@
                     @if(Util.getUser() != null && Util.getUser().equals(colony.user)) {
                     <a href="@routes.HiveRecords.edit(record.id)">
                         <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                    } else {
+                    <a href="@routes.Application.recordDetail(record.id)">
+                        <i class="glyphicon glyphicon-check"></i>
                     </a>
                     }
                 </td>

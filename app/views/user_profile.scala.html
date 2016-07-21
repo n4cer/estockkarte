@@ -13,28 +13,28 @@
     <h1>Profil</h1>
     
     <p>
-        @inputText(user_form("name"))
+        @inputText(user_form("name"), '_label -> "Name*", '_showConstraints -> false)
     </p>
     <p>
-        @inputText(user_form("firstName"))
+        @inputText(user_form("firstName"), '_label -> "Vorname")
     </p>
     <p>
-        @inputText(user_form("lastName"))
+        @inputText(user_form("lastName"), '_label -> "Nachname")
     </p>
     <p>
-        @inputText(user_form("street"))
+        @inputText(user_form("street"), '_label -> "Straße")
     </p>
     <p>
-        @inputText(user_form("zipCode"))
+        @inputText(user_form("zipCode"), '_label -> "Postleitzahl")
     </p>
     <p>
-        @inputText(user_form("city"))
+        @inputText(user_form("city"), '_label -> "Ort")
     </p>
     <p>
-        @inputText(user_form("email"))
+        @inputText(user_form("email"), '_label -> "E-Mail", '_showConstraints -> false)
     </p>
     <p>
-        @inputText(user_form("telephone"))
+        @inputText(user_form("telephone"), '_label -> "Telefon")
     </p>
     <p>
         <button type="submit">Speichern</button>

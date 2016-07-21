@@ -22,7 +22,7 @@
         <tbody>
     @for(record <- records) {
             <tr>
-                <td>@record.date</td>
+                <td>@record.date.format("dd.MM.yyy")</td>
                 <td>@record.gentleness</td>
                 <td>@record.swarming</td>
                 <td>@record.strength</td>

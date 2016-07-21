@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -42,9 +43,10 @@ public class Colony extends Model {
   public String getLastEntryDate() {
     if(this.hiveRecords.size() > 0) {
       HiveRecord record = this.hiveRecords.get(0);
+      SimpleDateFormat dt = new SimpleDateFormat("dd.MM.YYYY"); 
       
       if(record.date != null) {
-        return record.date.toString();
+        return dt.format(record.date);
       }
     }
     

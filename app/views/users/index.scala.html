@@ -1,0 +1,18 @@
+@(users: List[User])
+
+@main("Übersicht der Benutzer") {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+    @for(user <- users) {
+            <tr>
+                <td>@user.name</td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}

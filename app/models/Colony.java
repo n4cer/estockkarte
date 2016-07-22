@@ -72,6 +72,10 @@ public class Colony extends Model {
     }
   }
   
+  public String visibleHtml() {
+    return Util.BooleanToGlyphIcon(this.visible);
+  }
+  
   @Override
   public String toString() {
     return name;

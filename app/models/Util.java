@@ -22,12 +22,20 @@ public class Util {
     return true;
   }
   
-public static String rndUrl(int len) {
+  public static String rndUrl(int len) {
    StringBuilder sb = new StringBuilder( len );
    
    for( int i = 0; i < len; i++ ) 
       sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
    
    return sb.toString();
+  }
+  
+  public static String BooleanToGlyphIcon(Boolean b) {
+    if(b) {
+      return "<span class=\"glyphicon glyphicon-ok icon-success\"></span>";
+    }
+    
+    return "<span class=\"glyphicon glyphicon-remove icon-error\"></span>";
   }
 }

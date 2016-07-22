@@ -39,3 +39,16 @@ body {
 .error {
     color: #cc000e;
 }
+
+.icon-success {
+    color: #5CB85C;
+}
+
+.icon-error {
+    color: #cc000e;
+}
+
+.details label {
+    width: 150px;
+    margin-right: 10px;
+}

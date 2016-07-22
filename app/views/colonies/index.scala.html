@@ -12,6 +12,7 @@
                 <th>Beutenart</th>
                 <th>Kommentar</th>
                 <th>öffentlich sichtbar</th>
+                <th>Anzeigen</th>
                 <th>Bearbeiten</th>
                 <th>Löschen</th>
             </tr>
@@ -22,11 +23,16 @@
                 <td>@colony.name</td>
                 <td>@colony.race</td>
                 <td>@colony.queen</td>
-                <td>@colony.queenColor</td>
+                <td>@colony.getQueenColorString()</td>
                 <td>@colony.queenIdent</td>
                 <td>@colony.hive</td>
                 <td>@colony.comment</td>
-                <td>@colony.visible</td>
+                <td>@Html(colony.visibleHtml())</td>
+                <td>
+                    <a href="@routes.Application.colonyDetail(colony.id)">
+                        <i class="glyphicon glyphicon-zoom-in"></i>
+                    </a>
+                </td>
                 <td>
                     <a href="@routes.Colonies.edit(colony.id)">
                         <i class="glyphicon glyphicon-edit"></i>

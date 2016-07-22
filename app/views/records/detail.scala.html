@@ -4,19 +4,22 @@
 
 @main("Eintrag anzeigen") {
     <h1>Eintrag anzeigen</h1>
-    <p>
-        <strong>Datum: </strong>@record.date.format("dd.MM.yyy")<br />
-        <strong>Sanftmut: </strong>@record.gentleness<br />
-        <strong>Schwamrtrieb: </strong>@record.swarming<br />
-        <strong>Stärke: </strong>@record.strength<br />
-        <strong>Königin: </strong>@record.queen<br />
-        <strong>Eier: </strong>@record.eggs<br />
-        <strong>Maden: </strong>@record.maggots<br />
-        <strong>verdeckelte Brut: </strong>@record.cappedBrood<br />
-        <strong>Weiselzellen: </strong>@record.queenCells<br />
-        <strong>Futter: </strong>@record.feeding<br />
-        <strong>Varroa-Kontrolle: </strong>@record.varroaCheck<br />
-        <strong>Varroa: </strong>@record.varroa<br />
-        <strong>Kommentar: </strong>@record.comment<br />
+    <p class="details">
+        <label>Datum: </label>@record.date.format("dd.MM.yyy")<br />
+        <label>Sanftmut: </label>@record.gentleness<br />
+        <label>Schwamrtrieb: </label>@Html(record.swarmingHtml())<br />
+        <label>Stärke: </label>@record.strength<br />
+        <label>Königin: </label>@Html(record.queenHtml())<br />
+        <label>Eier: </label>@Html(record.eggsHtml())<br />
+        <label>Maden: </label>@Html(record.maggotsHtml())<br />
+        <label>verdeckelte Brut: </label>@Html(record.cappedBroodHtml())<br />
+        <label>Weiselzellen: </label>@Html(record.queenCellsHtml())<br />
+        <label>Futter: </label>@record.feeding<br />
+        <label>Varroa-Kontrolle: </label>@record.varroaCheck<br />
+        <label>Varroa: </label>@record.varroa<br />
+        <label>Kommentar: </label>@record.comment<br />
     </p>
+    @if(Util.getUser() != null && Util.getUser().equals(record.user)) {
+        <a href="@routes.HiveRecords.edit(record.id)">Bearbeiten</a>
+    }
 }

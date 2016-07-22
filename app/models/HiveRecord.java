@@ -31,7 +31,31 @@ public class HiveRecord extends Model {
   public String comment;
   @ManyToOne
   public User user;
-
+  
+  public String swarmingHtml() {
+    return Util.BooleanToGlyphIcon(this.swarming);
+  }
+  
+  public String queenHtml() {
+    return Util.BooleanToGlyphIcon(this.swarming);
+  }
+  
+  public String eggsHtml() {
+    return Util.BooleanToGlyphIcon(this.swarming);
+  }
+  
+  public String maggotsHtml() {
+    return Util.BooleanToGlyphIcon(this.swarming);
+  }
+  
+  public String cappedBroodHtml() {
+    return Util.BooleanToGlyphIcon(this.swarming);
+  }
+  
+  public String queenCellsHtml() {
+    return Util.BooleanToGlyphIcon(this.swarming);
+  }
+  
   @Override
   public String toString() {
     return id + " " + colony;

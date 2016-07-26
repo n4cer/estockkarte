@@ -33,6 +33,7 @@ POST    /records/add/:id            controllers.HiveRecords.create(id:Long)
 GET     /records/edit/:id           controllers.HiveRecords.edit(id: Long)
 POST    /records/edit/:id           controllers.HiveRecords.update(id: Long)
 GET     /records/detail/:id         controllers.Application.recordDetail(id: Long)
+GET     /records/delete/:id         controllers.HiveRecords.delete(id: Long)
 
 #Users
 GET     /users                     controllers.Users.index()

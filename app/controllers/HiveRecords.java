@@ -108,4 +108,17 @@ public class HiveRecords extends Controller {
       
     return redirect(routes.HiveRecords.show(colony.id));
   }
+  
+  public Result delete(Long id) {
+    HiveRecord record = HiveRecord.find.byId(id);
+    User user = Util.getUser();
+    
+    if (!user.equals(record.user)) {
+      return badRequest("Zugriff nicht erlaubt!");
+    }
+    
+    record.delete();
+    
+    return redirect(routes.HiveRecords.show(record.colony.id));
+  }
 }

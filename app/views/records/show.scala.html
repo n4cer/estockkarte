@@ -18,6 +18,7 @@
                 <th>Varroa</th>
                 <th />
                 <th />
+                <th />
             </tr>
         </thead>
         <tbody>
@@ -43,6 +44,11 @@
                 <td>
                     <a href="@routes.HiveRecords.edit(record.id)">
                         <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="@routes.HiveRecords.delete(record.id)">
+                        <i class="del glyphicon glyphicon-trash"></i>
                     </a>
                 </td>
             </tr>

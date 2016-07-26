@@ -3,6 +3,7 @@ package models;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -35,7 +36,7 @@ public class Colony extends Model {
   public User user;
   @Column(columnDefinition = "boolean default false")
   public Boolean visible = false;
-  @OneToMany
+  @OneToMany(mappedBy="colony", cascade=CascadeType.ALL)
   public List<HiveRecord> hiveRecords;
   @Column(length=10,unique=true)
   public String shortUrl;
@@ -55,6 +56,10 @@ public class Colony extends Model {
   }
   
   public String getQueenColorString() {
+    if(this.queenColor == null) {
+      return "";
+    }
+    
     switch (this.queenColor) {
       case Colonies.COLOR_NONE:
         return "nicht gezeichnet";

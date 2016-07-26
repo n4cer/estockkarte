@@ -3,12 +3,15 @@
 @import helper._
 
 @main("Beutenbeschriftung") {
-    <h1>@colony.name</h1>
+    <h1>@if(colony.hiveNumber != null && colony.hiveNumber.length() > 0) {#@colony.hiveNumber} @colony.name</h1>
     <img src="@routes.Colonies.showQRCode(colony.shortUrl)" alt="QRCode" />
     <p><strong>Name:</strong> @colony.user.firstName @colony.user.lastName<br />
     <strong>Straße:</strong> @colony.user.street<br />
     <strong>Ort:</strong> @colony.user.zipCode @colony.user.city<br />
     <strong>E-Mail:</strong> @colony.user.email<br />
     <strong>Telefon:</strong> @colony.user.telephone<br />
-    <strong>https://www.estockkarte.de/d/@colony.shortUrl</strong></p>
+    @if(Util.getUser().registrationNumber != null && Util.getUser().registrationNumber.length() > 0) {
+    <strong>Registriernummer:</strong> @colony.user.registrationNumber<br />
+    }
+    <strong><a href="https://www.estockkarte.de/d/@colony.shortUrl">https://www.estockkarte.de/d/@colony.shortUrl</a></strong></p>
 }

@@ -35,6 +35,7 @@ public class User extends Model {
   public Boolean visible;
   @Column(columnDefinition = "boolean default true")
   public Boolean active;
+  public String registrationNumber;
 
   @Override
   public String toString() {

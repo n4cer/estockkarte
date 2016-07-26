@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th>Bezeichnung</th>
+                <th>Nummer</th>
                 <th>Rasse</th>
                 <th>Königin</th>
                 <th>Zeichnungsfarbe</th>
@@ -21,6 +22,7 @@
     @for(colony <- colonies) {
             <tr>
                 <td>@colony.name</td>
+                <td>@colony.hiveNumber</td>
                 <td>@colony.race</td>
                 <td>@colony.queen</td>
                 <td>@colony.getQueenColorString()</td>

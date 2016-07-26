@@ -9,6 +9,9 @@
         @inputText(add_form("name"), '_label -> "Name")
     </p>
     <p>
+        @inputText(add_form("hiveNumber"), '_label -> "Nummer")
+    </p>
+    <p>
         @select(
             field = add_form("race.id"),
             options = races.map(race => race.id.toString -> race.name),
@@ -28,7 +31,7 @@
         )
     </p>
     <p>
-        @inputText(add_form("queenIdent"), '_label -> "Ident"
+        @inputText(add_form("queenIdent"), '_label -> "Zeichennummer"
         )
     </p>
     <p>

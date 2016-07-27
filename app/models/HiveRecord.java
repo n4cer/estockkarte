@@ -37,23 +37,23 @@ public class HiveRecord extends Model {
   }
   
   public String queenHtml() {
-    return Util.BooleanToGlyphIcon(this.swarming);
+    return Util.BooleanToGlyphIcon(this.queen);
   }
   
   public String eggsHtml() {
-    return Util.BooleanToGlyphIcon(this.swarming);
+    return Util.BooleanToGlyphIcon(this.eggs);
   }
   
   public String maggotsHtml() {
-    return Util.BooleanToGlyphIcon(this.swarming);
+    return Util.BooleanToGlyphIcon(this.maggots);
   }
   
   public String cappedBroodHtml() {
-    return Util.BooleanToGlyphIcon(this.swarming);
+    return Util.BooleanToGlyphIcon(this.cappedBrood);
   }
   
   public String queenCellsHtml() {
-    return Util.BooleanToGlyphIcon(this.swarming);
+    return Util.BooleanToGlyphIcon(this.queenCells);
   }
   
   @Override

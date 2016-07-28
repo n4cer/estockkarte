@@ -41,6 +41,8 @@ public class Colony extends Model {
   @Column(length=10,unique=true)
   public String shortUrl;
   public String hiveNumber;
+  @ManyToOne
+  public Stand stand;
   
   public String getLastEntryDate() {
     if(this.hiveRecords.size() > 0) {

@@ -1,0 +1,26 @@
+@(stand: Stand, colonies: List[Colony])
+    
+@import helper._
+
+@main("Volk Übersicht") {
+    <h1>Volk Übersicht</h1>
+    <p><strong>Name:</strong> @stand.name</p>
+    <p><strong>Straße:</strong> @stand.street</p>
+    <p><strong>Ort:</strong> @stand.zipCode @stand.city</p>
+    
+    <h2>zugehörige Völker</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+    @for(stand <- colonies) {
+            <tr>
+                <td>@stand.name</td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}

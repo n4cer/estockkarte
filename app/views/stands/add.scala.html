@@ -1,0 +1,25 @@
+@(add_form: Form[Stand])
+    
+@import helper._
+
+@main("Volk anlegen") {
+    <h1>Volk anlegen</h1>
+    @helper.form(routes.Stands.create) {
+    <p>
+        @inputText(add_form("name"), '_label -> "Name")
+    </p>
+    <p>
+        @inputText(add_form("street"), '_label -> "Straße")
+    </p>
+    <p>
+        @inputText(add_form("zipCode"), '_label -> "Postleitzahl")
+    </p>
+    <p>
+        @inputText(add_form("city"), '_label -> "Ort"
+        )
+    </p>
+    <p>
+        <button type="submit">Speichern</button>
+    </p>
+    }
+}

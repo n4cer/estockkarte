@@ -14,6 +14,15 @@ POST    /user_edit                  controllers.Application.userEdit()
 GET     /imprint                    controllers.Application.imprint()
 GET     /d/:shortUrl                controllers.Application.direct(shortUrl: String)
 
+#Stands
+GET     /stands                     controllers.Stands.index()
+GET     /stands/add                 controllers.Stands.add()
+POST    /stands/add                 controllers.Stands.create()
+GET     /stands/edit/:id            controllers.Stands.edit(id: Long)
+POST    /stands/edit/:id            controllers.Stands.update(id: Long)
+GET     /stands/delete/:id          controllers.Stands.delete(id: Long)
+GET     /stands/detail/:id          controllers.Stands.detail(id: Long)
+
 #Colonies
 GET     /colonies                   controllers.Colonies.index()
 GET     /colonies/add               controllers.Colonies.add()

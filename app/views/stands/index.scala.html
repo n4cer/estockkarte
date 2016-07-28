@@ -1,0 +1,45 @@
+@(stands: List[Stand])
+
+@main("Übersicht Deiner Bienenstände") {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Straße</th>
+                <th>Postleitzahl</th>
+                <th>Ort</th>
+                <th># Völker</th>
+                <th>Anzeigen</th>
+                <th>Bearbeiten</th>
+                <th>Löschen</th>
+            </tr>
+        </thead>
+        <tbody>
+    @for(stand <- stands) {
+            <tr>
+                <td>@stand.name</td>
+                <td>@stand.street</td>
+                <td>@stand.zipCode</td>
+                <td>@stand.city</td>
+                <td>TODO</td>
+                <td>
+                    <a href="@routes.Stands.detail(stand.id)">
+                        <i class="glyphicon glyphicon-zoom-in"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="@routes.Stands.edit(stand.id)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="@routes.Stands.delete(stand.id)">
+                        <i class="del glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <a href="@routes.Stands.add">Neuen Bienenstand anlegen</a>
+}

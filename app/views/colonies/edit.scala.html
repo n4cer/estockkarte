@@ -1,4 +1,4 @@
-@(colony: Colony, add_form: Form[Colony], hives: List[Hive], colors: List[QueenColor], races: List[Race])
+@(colony: Colony, add_form: Form[Colony], hives: List[Hive], colors: List[QueenColor], races: List[Race], stands: List[Stand])
     
 @import helper._
 
@@ -31,8 +31,7 @@
         )
     </p>
     <p>
-        @inputText(add_form("queenIdent"), '_label -> "Zeichennummer"
-        )
+        @inputText(add_form("queenIdent"), '_label -> "Zeichennummer")
     </p>
     <p>
         @select(
@@ -47,6 +46,14 @@
     </p>
     <p>
         @checkbox(add_form("visible"),'_label -> "öffentlich")
+    </p>
+    <p>
+        @select(
+            field = add_form("stand.id"),
+            options = stands.map(stand => stand.id.toString -> stand.name),
+            '_default -> "Bitte wählen",
+            '_label -> "Bienenstand"
+        )
     </p>
     <p>
         <button type="submit">Speichern</button>

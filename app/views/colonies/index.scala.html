@@ -13,6 +13,7 @@
                 <th>Beutenart</th>
                 <th>Kommentar</th>
                 <th>öffentlich sichtbar</th>
+                <th>Bienenstand</th>
                 <th>Anzeigen</th>
                 <th>Bearbeiten</th>
                 <th>Löschen</th>
@@ -30,6 +31,7 @@
                 <td>@colony.hive</td>
                 <td>@colony.comment</td>
                 <td>@Html(colony.visibleHtml())</td>
+                <td>@colony.stand</td>
                 <td>
                     <a href="@routes.Application.colonyDetail(colony.id)">
                         <i class="glyphicon glyphicon-zoom-in"></i>

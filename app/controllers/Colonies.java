@@ -9,6 +9,7 @@ import models.Colony;
 import models.Hive;
 import models.QueenColor;
 import models.Race;
+import models.Stand;
 import models.User;
 import models.Util;
 import net.glxn.qrgen.javase.QRCode;
@@ -39,17 +40,19 @@ public class Colonies extends Controller {
   public Result add() {
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
+    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
     
-    return ok(add.render(formFactory.form(Colony.class), hives, QueenColor.getColors(), races));
+    return ok(add.render(formFactory.form(Colony.class), hives, QueenColor.getColors(), races, stands));
   }
   
   public Result create() {
     Form<Colony> form = formFactory.form(Colony.class).bindFromRequest();
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
+    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
 
     if (form.hasErrors()) {
-      return badRequest(add.render(form, hives, QueenColor.getColors(), races));
+      return badRequest(add.render(form, hives, QueenColor.getColors(), races, stands));
     } 
     
     Colony colony = form.get();
@@ -70,8 +73,9 @@ public class Colonies extends Controller {
     
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
+    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
     
-    return ok(edit.render(colony, formFactory.form(Colony.class).fill(colony), hives, QueenColor.getColors(), races));
+    return ok(edit.render(colony, formFactory.form(Colony.class).fill(colony), hives, QueenColor.getColors(), races, stands));
   }
   
   public Result update(Long id) {
@@ -85,9 +89,10 @@ public class Colonies extends Controller {
     Form<Colony> form = formFactory.form(Colony.class).bindFromRequest();
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
+    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
 
     if (form.hasErrors()) {
-      return badRequest(edit.render(old_colony, form, hives, QueenColor.getColors(), races));
+      return badRequest(edit.render(old_colony, form, hives, QueenColor.getColors(), races, stands));
     } 
     
     Colony colony = form.get();

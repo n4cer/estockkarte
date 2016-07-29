@@ -1,8 +1,12 @@
 package models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.avaje.ebean.Model;
 
@@ -21,6 +25,16 @@ public class Stand extends Model {
   public String city;
   @ManyToOne
   public User user;
+  @OneToMany(mappedBy="stand", cascade=CascadeType.ALL)
+  public List<Colony> colonies;
+  
+  public Integer numberOfColonies() {
+    if(this.colonies == null) {
+      return 0;
+    }
+    
+    return this.colonies.size();
+  }
   
   @Override
   public String toString() {

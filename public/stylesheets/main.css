@@ -53,3 +53,7 @@ body {
     width: 150px;
     margin-right: 10px;
 }
+
+.play_logo img {
+    height: 24px;
+}

@@ -5,48 +5,60 @@
 @main("Eintrag bearbeiten") {
     <h1>Eintrag bearbeiten</h1>
     @helper.form(routes.HiveRecords.update(record.id)) {
-    <p>
-        @inputText(add_form("date"), '_label -> "Datum", 'type -> "date", 'class -> "datepicker")
-    </p>
-    <p>
-        @inputText(add_form("gentleness"), 'type -> "number", 'min -> "0", 'max -> 4, '_label -> "Sanftmut")
-    </p>
-    <p>
-        @checkbox(add_form("swarming"),'_label -> "in Schwarmstimmung")
-    </p>
-    <p>
-        @inputText(add_form("strength"), 'type -> "number", 'min -> "0", 'max -> 10, '_label -> "Stärke")
-    </p>
-    <p>
-        @checkbox(add_form("queen"),'_label -> "Königin?")
-    </p>
-    <p>
-        @checkbox(add_form("eggs"),'_label -> "Eier?")
-    </p>
-    <p>
-        @checkbox(add_form("maggots"),'_label -> "Maden?")
-    </p>
-    <p>
-        @checkbox(add_form("cappedBrood"),'_label -> "verdeckelte Brut?")
-    </p>
-    <p>
-        @checkbox(add_form("queenCells"),'_label -> "Weiselzellen?")
-    </p>
-    <p>
-        @inputText(add_form("feeding"), '_label -> "Futter")
-    </p>
-    <p>
-        @inputText(add_form("varroaCheck"), '_label -> "Varroa-Kontrolle")
-    </p>
-    <p>
-        @inputText(add_form("varroa"), '_label -> "Varroa")
-    </p>
-    <p>
+    <div class="form_row">
+        <div class="left">
+            @inputText(add_form("date"), '_label -> "Datum", 'type -> "date", 'class -> "datepicker")
+        </div>
+        <div class="right">
+            @inputText(add_form("gentleness"), 'type -> "number", 'min -> "0", 'max -> 4, '_label -> "Sanftmut")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @checkbox(add_form("swarming"),'_label -> "in Schwarmstimmung")
+        </div>
+        <div class="right">
+            @inputText(add_form("strength"), 'type -> "number", 'min -> "0", 'max -> 10, '_label -> "Stärke")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @checkbox(add_form("queen"),'_label -> "Königin?")
+        </div>
+        <div class="right">
+            @checkbox(add_form("eggs"),'_label -> "Eier?")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @checkbox(add_form("maggots"),'_label -> "Maden?")
+        </div>
+        <div class="right">
+            @checkbox(add_form("cappedBrood"),'_label -> "verdeckelte Brut?")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @checkbox(add_form("queenCells"),'_label -> "Weiselzellen?")
+        </div>
+        <div class="right">
+            @inputText(add_form("feeding"), '_label -> "Futter")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @inputText(add_form("varroaCheck"), '_label -> "Varroa-Kontrolle")
+        </div>
+        <div class="right">
+            @inputText(add_form("varroa"), '_label -> "Varroa")
+        </div>
+    </div>
+    <div class="form_row">
         @textarea(add_form("comment"),'_label -> "Kommentar")
-    </p>
-    <p>
+    </div>
+    <div class="form_row">
         <button type="submit">Speichern</button>
-    </p>
+    </div>
     }
     
     <script>

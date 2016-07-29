@@ -57,3 +57,20 @@ body {
 .play_logo img {
     height: 24px;
 }
+
+/* forms */
+.form_row {
+    clear: both;
+    margin-bottom: 5px;
+    min-height: 27px;
+}
+
+.form_row .left {
+    float: left;
+    min-width: 300px;
+}
+
+.form_row .right {
+    float: left;
+    min-width: 300px;
+}

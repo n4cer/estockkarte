@@ -5,59 +5,68 @@
 @main("Volk anlegen") {
     <h1>Volk anlegen</h1>
     @helper.form(routes.Colonies.create) {
-    <p>
-        @inputText(add_form("name"), '_label -> "Name")
-    </p>
-    <p>
-        @inputText(add_form("hiveNumber"), '_label -> "Nummer")
-    </p>
-    <p>
-        @select(
-            field = add_form("race.id"),
-            options = races.map(race => race.id.toString -> race.name),
-            '_default -> "Bitte wählen",
-            '_label -> "Rasse"
-        )
-    </p>
-    <p>
-        @inputText(add_form("queen"), '_label -> "Königin")
-    </p>
-    <p>
-        @select(
-            field = add_form("queenColor"),
-            options = colors.map(color => color.number.toString -> color.name),
-            '_default -> Seq("nicht gezeichnet"),
-            '_label -> "Zeichenfarbe"
-        )
-    </p>
-    <p>
-        @inputText(add_form("queenIdent"), '_label -> "Zeichennummer"
-        )
-    </p>
-    <p>
-        @select(
-            field = add_form("hive.id"),
-            options = hives.map(hive => hive.id.toString -> hive.name),
-            '_default -> "Bitte wählen",
-            '_label -> "Beutentyp"
-        )
-    </p>
-    <p>
-        @textarea(add_form("comment"),'_label -> "Kommentar")
-    </p>
-    <p>
-        @checkbox(add_form("visible"),'_label -> "öffentlich")
-    </p>
-    <p>
-        @select(
-            field = add_form("stand.id"),
-            options = stands.map(stand => stand.id.toString -> stand.name),
-            '_default -> "Bitte wählen",
-            '_label -> "Bienenstand"
-        )
-    </p>
-    <p>
+    <div class="form_row">
+        <div class="left">
+            @inputText(add_form("name"), '_label -> "Name")
+        </div>
+        <div class="right">
+            @inputText(add_form("hiveNumber"), '_label -> "Nummer")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @select(
+                field = add_form("race.id"),
+                options = races.map(race => race.id.toString -> race.name),
+                '_default -> "Bitte wählen",
+                '_label -> "Rasse"
+            )
+        </div>
+        <div class="right">
+            @inputText(add_form("queen"), '_label -> "Königin")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @select(
+                field = add_form("queenColor"),
+                options = colors.map(color => color.number.toString -> color.name),
+                '_default -> Seq("nicht gezeichnet"),
+                '_label -> "Zeichenfarbe"
+            )
+        </div>
+        <div class="right">
+            @inputText(add_form("queenIdent"), '_label -> "Zeichennummer")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left">
+            @select(
+                field = add_form("hive.id"),
+                options = hives.map(hive => hive.id.toString -> hive.name),
+                '_default -> "Bitte wählen",
+                '_label -> "Beutentyp"
+            )
+        </div>
+        <div class="right">
+            @textarea(add_form("comment"),'_label -> "Kommentar")
+        </div>
+    </div>
+    <div class="form_row">
+        <div class="left
+            @checkbox(add_form("visible"),'_label -> "öffentlich")
+        </div>
+        <div class="right">
+            @select(
+                field = add_form("stand.id"),
+                options = stands.map(stand => stand.id.toString -> stand.name),
+                '_default -> "Bitte wählen",
+                '_label -> "Bienenstand"
+            )
+        </div>
+    </div>
+    <div class="form_row">
         <button type="submit">Speichern</button>
-    </p>
+    </div>
     }
 }

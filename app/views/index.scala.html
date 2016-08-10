@@ -1,14 +1,19 @@
 @main("Startseite eStockkarte") {
     <h1>Übersicht</h1>
     
-    @if(Util.getUser() == null) {
+    @if(Util.getUser() != null) {
       <p>
-        Online Stockkarte im Aufbau - Bitte einloggen oder registrieren
-      </p>
-    } else {
-      <p>
-        Hallo @Util.getUser().name<br>
-        Online Stockkarte im Aufbau
+        Hallo @Util.getUser().name
       </p>
     }
+    <p>
+      <b>Online Stockkarte im Aufbau</b><br>
+      bisher verfügbare Funktionen:
+    </p>
+    <ul>
+        <li>Bienenstände verwalten</li>
+        <li>Völker verwalten</li>
+        <li>Stockkarten verwalten</li>
+        <li>Beutenbeschriftung mit QR-Code erstellen</li>
+    </ul>
 }

@@ -16,6 +16,7 @@
                 <th>Futter</th>
                 <th>Varroa-Kontrolle</th>
                 <th>Varroa</th>
+                <th>Gewicht</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -24,7 +25,7 @@
         <tbody>
     @for(record <- records) {
             <tr>
-                <td>@record.date.format("dd.MM.yyy")</td>
+                <td>@if(record.date != null) { @record.date.format("dd.MM.yyy") }</td>
                 <td>@record.gentleness</td>
                 <td>@Html(record.swarmingHtml())</td>
                 <td>@record.strength</td>
@@ -36,6 +37,7 @@
                 <td>@record.feeding</td>
                 <td>@record.varroaCheck</td>
                 <td>@record.varroa</td>
+                <td>@record.weight</td>
                 <td>
                     <a href="@routes.Application.recordDetail(record.id)">
                         <i class="glyphicon glyphicon-zoom-in"></i>

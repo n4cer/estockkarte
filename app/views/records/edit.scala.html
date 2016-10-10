@@ -54,7 +54,12 @@
         </div>
     </div>
     <div class="form_row">
-        @textarea(add_form("comment"),'_label -> "Kommentar")
+        <div class="left">
+            @inputText(add_form("weight"), '_label -> "Gewicht")
+        </div>
+        <div class="right">
+            @textarea(add_form("comment"),'_label -> "Kommentar")
+        </div>
     </div>
     <div class="form_row">
         <button type="submit">Speichern</button>

@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 
 import com.avaje.ebean.Model;
 
+import play.data.validation.Constraints.Required;
+
 @Entity
 public class HiveRecord extends Model {
 
@@ -16,6 +18,7 @@ public class HiveRecord extends Model {
   public Long id;
   @ManyToOne
   public Colony colony;
+  @Required
   public Date date;
   public Integer gentleness;
   public Boolean swarming = false;
@@ -29,6 +32,7 @@ public class HiveRecord extends Model {
   public String varroaCheck;
   public String varroa;
   public String comment;
+  public String weight;
   @ManyToOne
   public User user;
   

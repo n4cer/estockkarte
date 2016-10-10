@@ -33,6 +33,7 @@
                 <th>Futter</th>
                 <th>Varroa-Kontrolle</th>
                 <th>Varroa</th>
+                <th>Gewicht</th>
                 <th></th>
             </tr>
         </thead>
@@ -51,6 +52,7 @@
                 <td>@record.feeding</td>
                 <td>@record.varroaCheck</td>
                 <td>@record.varroa</td>
+                <td>@record.weight</td>
                 <td>
                     @if(Util.getUser() != null && Util.getUser().equals(colony.user)) {
                     <a href="@routes.Application.recordDetail(record.id)">

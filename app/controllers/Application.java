@@ -21,6 +21,7 @@ import play.api.Play;
 import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.Constraints;
+import play.data.validation.Constraints.MinLength;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
@@ -44,10 +45,21 @@ public class Application extends Controller {
     @Constraints.Required
     public String username;
     @Constraints.Required
+    @MinLength(6)
     public String password;
+    @MinLength(6)
+    public String confirmPassword;
 
     public String validate() {
-      //TODO: validate data
+      if(!password.equals(confirmPassword)) {
+        return "Passwörter stimmen nicht überein";
+      }
+      
+      User user = User.find.where().eq("name", username).findUnique();
+      if(user != null) {
+        return "Der Benutzer existiert bereits.";
+      }
+      
       return null;
     }
   }

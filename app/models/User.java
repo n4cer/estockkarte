@@ -77,4 +77,9 @@ public class User extends Model {
     
     return user;
   }
+  
+  public void changePassword(String password) {
+    this.passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
+    this.save();
+  }
 }

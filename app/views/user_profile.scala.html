@@ -12,6 +12,8 @@
     @helper.form(routes.Application.userEdit) {
     <h1>Profil</h1>
     
+    <a href="@routes.Application.password">Passwort ändern</a>
+    
     <p>
         @inputText(user_form("name"), '_label -> "Name*", '_showConstraints -> false)
     </p>

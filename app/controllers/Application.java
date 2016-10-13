@@ -24,6 +24,7 @@ import play.data.validation.Constraints;
 import play.data.validation.Constraints.MinLength;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 import views.html.*;
 
 public class Application extends Controller {
@@ -37,6 +38,22 @@ public class Application extends Controller {
       if (User.authenticate(username, password) == null) {
         return "Benutzer oder Passwort ungültig!";
       }
+      return null;
+    }
+  }
+  
+  public static class ChangePassword {
+    @Constraints.Required
+    @MinLength(6)
+    public String password;
+    @MinLength(6)
+    public String confirmPassword;
+
+    public String validate() {
+      if(!password.equals(confirmPassword)) {
+        return "Passwörter stimmen nicht überein";
+      }
+      
       return null;
     }
   }
@@ -100,7 +117,7 @@ public class Application extends Controller {
       return badRequest(signup.render(signup_form));
     } else {
       String userName = signup_form.get().username.toLowerCase();
-      String password = signup_form.get().password.toLowerCase();
+      String password = signup_form.get().password;
       
       User user = User.create(userName, password);
       session("username", userName);
@@ -120,10 +137,36 @@ public class Application extends Controller {
     return redirect(routes.Application.index());
   }
   
+  @Security.Authenticated(Secured.class)
   public Result user() {
     Form<User> user_form = formFactory.form(User.class);
 
     return ok(user_profile.render(user_form.fill(Util.getUser())));
+  }
+  
+  @Security.Authenticated(Secured.class)
+  public Result password() {
+    Form<ChangePassword> change_password_form = formFactory.form(ChangePassword.class);
+
+    return ok(change_password.render(change_password_form));
+  }
+  
+  @Security.Authenticated(Secured.class)
+  public Result changePassword() {
+    Form<ChangePassword> form = formFactory.form(ChangePassword.class).bindFromRequest();
+    
+    if (form.hasErrors()) {
+      flash("success", "Fehler beim Ändern des Passwortes.");
+      return badRequest(change_password.render(form));
+    } else {
+      ChangePassword changePassword = form.get();
+      User user = Util.getUser();
+      user.changePassword(changePassword.password);
+      
+      flash("success", "Das Passwort wurde geändert.");
+      
+      return ok(change_password.render(form));
+    }
   }
   
   public Result userEdit() {

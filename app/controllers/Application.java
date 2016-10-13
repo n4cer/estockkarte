@@ -117,7 +117,6 @@ public class Application extends Controller {
 
   public Result logout() {
     session().clear();
-    flash("success", "Abgemeldet");
     return redirect(routes.Application.index());
   }
   
@@ -135,10 +134,20 @@ public class Application extends Controller {
       return badRequest(user_profile.render(form));
     } else {
       User user = form.get();
-      user.id = Util.getUser().id;
+      User oldUser = Util.getUser();
+      //upper case usernames are not allowed
+      user.name = user.name.toLowerCase();
+      user.id = oldUser.id;
       user.update();
       
+      //logout if user has changed
+      if(!oldUser.name.equals(user.name)) {
+        flash("success", "Benutzername geändert. Bitte melden Sie sich erneut an.");
+        return redirect(routes.Application.logout());
+      }
+      
       flash("success", "gespeichert");
+      
       return ok(user_profile.render(form));
     }
   }

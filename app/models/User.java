@@ -10,6 +10,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import com.avaje.ebean.Model;
 
 import play.data.validation.Constraints;
+import play.data.validation.Constraints.MinLength;
 
 @Entity
 @Table(name = "beekeepers")
@@ -20,6 +21,7 @@ public class User extends Model {
   public Long id;
   @Constraints.Required
   @Column(unique = true)
+  @MinLength(4)
   public String name;
   public String firstName;
   public String lastName;

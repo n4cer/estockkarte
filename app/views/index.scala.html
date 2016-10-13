@@ -1,6 +1,12 @@
 @main("Startseite eStockkarte") {
     <h1>Übersicht</h1>
     
+    @if(flash.contains("success")) {
+    <p class="successs">
+        @flash.get("success")
+    </p>
+    }
+    
     @if(Util.getUser() != null) {
       <p>
         Hallo @Util.getUser().name

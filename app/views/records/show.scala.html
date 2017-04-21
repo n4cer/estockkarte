@@ -1,6 +1,7 @@
 @(colony: Colony, records: List[HiveRecord])
 
 @main("Stockkarte " + colony) {
+    <h1>Stockkarte @if(colony.hiveNumber.size > 0) {#@colony.hiveNumber} @colony.name</h1>
     <table class="table">
         <thead>
             <tr>

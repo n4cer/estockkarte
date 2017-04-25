@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import com.avaje.ebean.Model;
 
@@ -37,6 +38,7 @@ public class Colony extends Model {
   @Column(columnDefinition = "boolean default false")
   public Boolean visible = false;
   @OneToMany(mappedBy="colony", cascade=CascadeType.ALL)
+  @OrderBy("date desc")
   public List<HiveRecord> hiveRecords;
   @Column(length=10,unique=true)
   public String shortUrl;

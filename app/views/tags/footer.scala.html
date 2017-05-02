@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">@play.Play.application().configuration().getString("app.version") - @play.Play.application().configuration().getString("copyright") @play.Play.application().configuration().getString("owner.name")
+        <p class="text-muted">@Util.getConfigValueByKey("app.version") - @Util.getConfigValueByKey("copyright") @Util.getConfigValueByKey("owner.name")
             <a id="github_mark" target="_blank" href="https://github.com/n4cer/estockkarte">
                 <img src="@routes.Assets.versioned("images/GitHub-Mark-32px.png")" alt="github logo" />
             </a>

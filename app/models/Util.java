@@ -2,6 +2,8 @@ package models;
 
 import java.security.SecureRandom;
 
+import play.Configuration;
+import play.api.Play;
 import play.mvc.Http.Context;
 
 public class Util {
@@ -37,5 +39,11 @@ public class Util {
     }
     
     return "<span class=\"glyphicon glyphicon-remove icon-error\"></span>";
+  }
+  
+  public static String getConfigValueByKey(String key) {
+    Configuration config = Play.current().injector().instanceOf(Configuration.class);
+    
+    return config.getString(key);
   }
 }

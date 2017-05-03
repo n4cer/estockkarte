@@ -32,7 +32,7 @@ public class HiveRecord extends Model {
   public String varroaCheck;
   public String varroa;
   public String comment;
-  public String weight;
+  public Float weight;
   @ManyToOne
   public User user;
   

@@ -2,6 +2,7 @@
 
 @main("Stockkarte " + colony) {
     <h1>Stockkarte @if(colony.hiveNumber.size > 0) {#@colony.hiveNumber} @colony.name</h1>
+    <a href="@routes.HiveRecords.add(colony.id)">Neuen Eintrag anlegen</a>
     <table class="table">
         <thead>
             <tr>

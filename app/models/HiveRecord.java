@@ -5,15 +5,13 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import com.avaje.ebean.Model;
-
+import io.ebean.*;
 import play.data.validation.Constraints.Required;
 
 @Entity
 public class HiveRecord extends Model {
 
-  public static Finder<Long, HiveRecord> find = new Finder<Long, HiveRecord>(HiveRecord.class);
+  public static Finder<Long, HiveRecord> find = new Finder<>(HiveRecord.class);
   @Id
   public Long id;
   @ManyToOne

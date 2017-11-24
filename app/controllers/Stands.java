@@ -26,7 +26,7 @@ public class Stands extends Controller {
   @Inject FormFactory formFactory;
   
   public Result index() {
-    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).order().asc("id").findList();
+    List<Stand> stands = Stand.find.query().where().eq("user", Util.getUser()).order().asc("id").findList();
     
     return ok(index.render(stands));
   }
@@ -97,7 +97,7 @@ public class Stands extends Controller {
   
   public Result detail(Long id) {
     Stand stand = Stand.find.byId(id);
-    List<Colony> colonies = Colony.find.where().eq("stand", stand).order().asc("id").findList();
+    List<Colony> colonies = Colony.find.query().where().eq("stand", stand).order().asc("id").findList();
     User user = Util.getUser();
     
     if (user != null && user.equals(stand.user)) {

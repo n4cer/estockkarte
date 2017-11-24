@@ -5,7 +5,7 @@
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u="//@play.Play.application().configuration().getString("piwik.url")";
+    var u="//@Util.getConfigValueByKey("piwik.url")";
     _paq.push(['setTrackerUrl', u+'piwik.php']);
     _paq.push(['setSiteId', '@Util.getConfigValueByKey("piwik.id")']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];

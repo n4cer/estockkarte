@@ -3,8 +3,7 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.avaje.ebean.Model;
-
+import io.ebean.*;
 import play.data.validation.Constraints;
 
 @Entity

@@ -24,7 +24,7 @@ public class HiveRecords extends Controller {
   @Inject FormFactory formFactory;
   
   public Result index() {
-    List<Colony> colonies = Colony.find.where().eq("user", Util.getUser()).order().asc("id").findList();
+    List<Colony> colonies = Colony.find.query().where().eq("user", Util.getUser()).order().asc("id").findList();
     
     return ok(index.render(colonies));
   }
@@ -36,7 +36,7 @@ public class HiveRecords extends Controller {
     if(colony == null) {
       records = new ArrayList<>();
     } else {
-      records = HiveRecord.find.where().eq("user", Util.getUser()).eq("colony", colony).orderBy().desc("date").findList();
+      records = HiveRecord.find.query().where().eq("user", Util.getUser()).eq("colony", colony).orderBy().desc("date").findList();
     }
     
     return ok(show.render(colony, records));

@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.avaje.ebean.Model;
-
+import io.ebean.*;
 import play.data.validation.Constraints;
 
 @Entity

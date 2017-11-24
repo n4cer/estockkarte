@@ -72,7 +72,7 @@ public class Application extends Controller {
         return "Passwörter stimmen nicht überein";
       }
       
-      User user = User.find.where().eq("name", username).findUnique();
+      User user = User.find.query().where().eq("name", username).findUnique();
       if(user != null) {
         return "Der Benutzer existiert bereits.";
       }
@@ -204,7 +204,6 @@ public class Application extends Controller {
     for (int i = 0; i < email.length(); i++) {
       email_encoded += ("&#" + email.codePointAt(i) + ";");
     }
-    System.out.println(email_encoded);
     
     return ok(imprint.render(name, street, city, email_encoded));
   }
@@ -214,7 +213,7 @@ public class Application extends Controller {
    * @return Result
    */
   public Result direct(String shortUrl) {
-    Colony colony = Colony.find.where().eq("shortUrl", shortUrl).findUnique();
+    Colony colony = Colony.find.query().where().eq("shortUrl", shortUrl).findUnique();
     
     if(colony == null) {
       return badRequest("Seite nicht gefunden");
@@ -225,7 +224,7 @@ public class Application extends Controller {
   
   public Result colonyDetail(Long id) {
     Colony colony = Colony.find.byId(id);
-    List<HiveRecord> records = HiveRecord.find.where().eq("colony", colony).order().desc("date").setMaxRows(4).findList();
+    List<HiveRecord> records = HiveRecord.find.query().where().eq("colony", colony).order().desc("date").setMaxRows(4).findList();
     User user = Util.getUser();
     
     if(colony.visible) {

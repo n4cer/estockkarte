@@ -10,8 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-
-import com.avaje.ebean.Model;
+import io.ebean.*;
 
 import controllers.Colonies;
 import play.data.validation.Constraints;
@@ -19,7 +18,7 @@ import play.data.validation.Constraints;
 @Entity
 public class Colony extends Model {
 
-  public static Finder<Long, Colony> find = new Finder<Long, Colony>(Colony.class);
+  public static Finder<Long, Colony> find = new Finder<>(Colony.class);
   @Id
   public Long id;
   @Constraints.Required

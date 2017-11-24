@@ -32,7 +32,7 @@ public class Colonies extends Controller {
   public static final int COLOR_GREEN = 4;
   
   public Result index() {
-    List<Colony> colonies = Colony.find.where().eq("user", Util.getUser()).order().asc("id").findList();
+    List<Colony> colonies = Colony.find.query().where().eq("user", Util.getUser()).order().asc("id").findList();
     
     return ok(index.render(colonies));
   }
@@ -40,7 +40,7 @@ public class Colonies extends Controller {
   public Result add() {
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
-    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
+    List<Stand> stands = Stand.find.query().where().eq("user", Util.getUser()).findList();
     
     return ok(add.render(formFactory.form(Colony.class), hives, QueenColor.getColors(), races, stands));
   }
@@ -49,7 +49,7 @@ public class Colonies extends Controller {
     Form<Colony> form = formFactory.form(Colony.class).bindFromRequest();
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
-    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
+    List<Stand> stands = Stand.find.query().where().eq("user", Util.getUser()).findList();
 
     if (form.hasErrors()) {
       return badRequest(add.render(form, hives, QueenColor.getColors(), races, stands));
@@ -73,7 +73,7 @@ public class Colonies extends Controller {
     
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
-    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
+    List<Stand> stands = Stand.find.query().where().eq("user", Util.getUser()).findList();
     
     return ok(edit.render(colony, formFactory.form(Colony.class).fill(colony), hives, QueenColor.getColors(), races, stands));
   }
@@ -89,7 +89,7 @@ public class Colonies extends Controller {
     Form<Colony> form = formFactory.form(Colony.class).bindFromRequest();
     List<Hive> hives = Hive.find.all();
     List<Race> races = Race.find.all();
-    List<Stand> stands = Stand.find.where().eq("user", Util.getUser()).findList();
+    List<Stand> stands = Stand.find.query().where().eq("user", Util.getUser()).findList();
 
     if (form.hasErrors()) {
       return badRequest(edit.render(old_colony, form, hives, QueenColor.getColors(), races, stands));

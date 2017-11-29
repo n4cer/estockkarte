@@ -22,18 +22,22 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.data.validation.Constraints;
 import play.data.validation.Constraints.MinLength;
+import play.data.validation.Constraints.Validate;
+import play.data.validation.Constraints.Validatable;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 import views.html.*;
 
 public class Application extends Controller {
-  public static class Login {
+  @Validate
+  public static class Login implements Validatable<String> {
     @Constraints.Required
     public String username;
     @Constraints.Required
     public String password;
-
+    
+    @Override
     public String validate() {
       if (User.authenticate(username, password) == null) {
         return "Benutzer oder Passwort ungültig!";
@@ -42,13 +46,15 @@ public class Application extends Controller {
     }
   }
   
-  public static class ChangePassword {
+  @Validate
+  public static class ChangePassword implements Validatable<String> {
     @Constraints.Required
     @MinLength(6)
     public String password;
     @MinLength(6)
     public String confirmPassword;
-
+    
+    @Override
     public String validate() {
       if(!password.equals(confirmPassword)) {
         return "Passwörter stimmen nicht überein";
@@ -58,7 +64,8 @@ public class Application extends Controller {
     }
   }
   
-  public static class Signup {
+  @Validate
+  public static class Signup implements Validatable<String> {
     @Constraints.Required
     public String username;
     @Constraints.Required
@@ -66,7 +73,8 @@ public class Application extends Controller {
     public String password;
     @MinLength(6)
     public String confirmPassword;
-
+    
+    @Override
     public String validate() {
       if(!password.equals(confirmPassword)) {
         return "Passwörter stimmen nicht überein";

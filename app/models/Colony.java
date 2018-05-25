@@ -58,6 +58,18 @@ public class Colony extends Model {
     return "";
   }
   
+  public Float getLastEntryWeight() {
+    if(this.hiveRecords.size() > 0) {
+      HiveRecord record = this.hiveRecords.get(0);
+      
+      if(record.weight != null) {
+        return record.weight;
+      }
+    }
+    
+    return 0F;
+  }
+  
   public String getQueenColorString() {
     if(this.queenColor == null) {
       return "";

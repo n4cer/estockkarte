@@ -6,6 +6,7 @@
             <tr>
                 <th>Bezeichnung</th>
                 <th>Letzter Eintrag</th>
+                <th>Gewicht</th>
                 <th></th>
             </tr>
         </thead>
@@ -14,6 +15,7 @@
             <tr>
                 <td><a href="@routes.HiveRecords.show(colony.id)">@if(colony.hiveNumber.size > 0) {#@colony.hiveNumber} @colony.name</a></td>
                 <td>@colony.getLastEntryDate()</td>
+                <td>@colony.getLastEntryWeight()</td>
                 <td>
                     <a href="@routes.HiveRecords.show(colony.id)">
                         <i class="glyphicon glyphicon-edit"></i>

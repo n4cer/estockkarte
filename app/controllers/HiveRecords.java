@@ -32,6 +32,10 @@ public class HiveRecords extends Controller {
   public Result show(Long id) {
     Colony colony = Colony.find.byId(id);
     
+    if(colony != null && !colony.user.equals(Util.getUser())) {
+      return badRequest("Dieses Volk gehört Dir nicht.");
+    }
+    
     List<HiveRecord> records = null;
     if(colony == null) {
       records = new ArrayList<>();
